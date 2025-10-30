@@ -1,0 +1,13 @@
+{
+    "name": "projeto-nutri",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Plano Nutricional - SASS (variaveis, mixins e modulos @use)",
+    "scripts": {
+      "dev": "sass --watch scss/style.scss css/style.css --no-source-map",
+      "build": "sass scss/style.scss css/style.css --style=compressed"
+    },
+    "devDependencies": {
+      "sass": "^1.79.0"
+    }
+  }

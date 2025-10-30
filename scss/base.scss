@@ -1,0 +1,47 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; display: block; }
+
+body {
+  font-family: v.$font;
+  color: v.$text;
+  background-image: url('../img/pexels-enginakyurt-1435904.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.45));
+  pointer-events: none;
+}
+
+main {
+  display: grid;
+  justify-items: center;
+  gap: clamp(16px, 3vw, 36px);
+  @include m.container(1100px, clamp(16px, 4vw, 32px));
+  margin-block: clamp(16px, 4vw, 56px);
+}
+
+h1 {
+  margin: 10px 0 0;
+  font-size: clamp(30px, 5vw, 46px);
+  color: #fff;
+  letter-spacing: .3px;
+  text-align: center;
+}
+h2 {
+  margin: 6px 0 0;
+  font-weight: 500;
+  font-size: clamp(18px, 2.5vw, 22px);
+  color: #e5e7eb;
+  text-align: center;
+}

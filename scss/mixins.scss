@@ -1,0 +1,49 @@
+@use "variables" as v;
+
+/* ---- MIXINS ---- */
+@mixin container($max: 1100px, $pad: 20px) {
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: $pad;
+}
+
+@mixin card {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: v.$radius;
+  box-shadow: v.$shadow;
+  backdrop-filter: blur(6px);
+}
+
+@mixin button($bg, $hover) {
+  background: $bg;
+  color: v.$white;
+  padding: 12px 20px;
+  border-radius: v.$radius;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  letter-spacing: .3px;
+  transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,.2);
+  &:hover { background: $hover; transform: translateY(-2px); }
+}
+
+/* animações (ícones, cards) */
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+@keyframes pulseGlow { 0%,100%{filter:drop-shadow(0 0 2px rgba(255,255,255,.1))} 50%{filter:drop-shadow(0 0 10px rgba(255,255,255,.4))} }
+
+@mixin social-icon {
+  width: calc(40px * 1.4);
+  height: calc(40px * 1.4);
+  border-radius: 50%;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite, pulseGlow 2.5s ease-in-out infinite;
+  transition: transform .25s ease, filter .25s ease;
+  &:hover { transform: scale(1.15) rotate(-8deg); filter: drop-shadow(0 0 14px rgba(255,255,255,.5)); }
+}
+
+@mixin liftable {
+  transition: transform .25s ease, box-shadow .25s ease;
+  &:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,.28); }
+}

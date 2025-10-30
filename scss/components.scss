@@ -1,0 +1,83 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+.mensagem {
+  @include m.card;
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: clamp(14px, 2vw, 20px);
+  color: v.$text;
+  font-size: clamp(15px, 1.6vw, 17px);
+  text-align: center;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: clamp(18px, 3vw, 32px);
+}
+
+@media (min-width: 1100px) {
+  .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.plan {
+  @include m.card;
+  @include m.liftable;
+  width: min(100%, 360px);
+  padding: clamp(18px, 2.5vw, 26px);
+  text-align: left;
+  position: relative;
+
+  > img { width: 72px; margin: 0 auto 12px; display:block; }
+
+  h3 {
+    text-align: center;
+    font-size: clamp(16px, 1.9vw, 18px);
+    margin: 0 0 12px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    li {
+      margin: 10px 0;
+      padding-left: 14px;
+      position: relative;
+      color: v.$text;
+      &::before {
+        content: "•";
+        color: v.$primary;
+        position: absolute;
+        left: 0;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .price {
+    text-align: center;
+    font-weight: 800;
+    font-size: clamp(22px, 2.6vw, 28px);
+    margin: 18px 0 20px;
+  }
+
+  .btn { @include m.button(v.$primary, v.$primary-hover); width: 100%; text-align: center; }
+
+  .badge {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: #111827;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+  }
+}
+
+.plan--basic h3   { color: v.$accent-basic; }
+.plan--plus  h3   { color: v.$accent-plus; }
+.plan--premium h3 { color: v.$accent-prem; }
